@@ -7,10 +7,11 @@ import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
 
 
-// ★ TODO : 서버 url 변경
-const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://demos.openvidu.io/';
+// ★ TODO : 서버 url 변경 필요
+const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
 
-// ★ TODO : APP 컴포넌트 세부 사항 수정
+
+// ★ TODO : APP 컴포넌트 세부 사항 수정 필요
 class App extends Component {
     constructor(props) {
         super(props);
@@ -58,24 +59,24 @@ class App extends Component {
         });
     }
 
-    // handleMainVideoStream(stream) {
-    //     if (this.state.mainStreamManager !== stream) {
-    //         this.setState({
-    //             mainStreamManager: stream
-    //         });
-    //     }
-    // }
+    handleMainVideoStream(stream) {
+        if (this.state.mainStreamManager !== stream) {
+            this.setState({
+                mainStreamManager: stream
+            });
+        }
+    }
 
-    // deleteSubscriber(streamManager) {
-    //     let subscribers = this.state.subscribers;
-    //     let index = subscribers.indexOf(streamManager, 0);
-    //     if (index > -1) {
-    //         subscribers.splice(index, 1);
-    //         this.setState({
-    //             subscribers: subscribers,
-    //         });
-    //     }
-    // }
+    deleteSubscriber(streamManager) {
+        let subscribers = this.state.subscribers;
+        let index = subscribers.indexOf(streamManager, 0);
+        if (index > -1) {
+            subscribers.splice(index, 1);
+            this.setState({
+                subscribers: subscribers,
+            });
+        }
+    }
 
     joinSession() {
         // --- 1) Get an OpenVidu object ---
@@ -190,40 +191,40 @@ class App extends Component {
         });
     }
 
-    // async switchCamera() {
-    //     try {
-    //         const devices = await this.OV.getDevices()
-    //         var videoDevices = devices.filter(device => device.kind === 'videoinput');
+    async switchCamera() {
+        try {
+            const devices = await this.OV.getDevices()
+            var videoDevices = devices.filter(device => device.kind === 'videoinput');
 
-    //         if (videoDevices && videoDevices.length > 1) {
+            if (videoDevices && videoDevices.length > 1) {
 
-    //             var newVideoDevice = videoDevices.filter(device => device.deviceId !== this.state.currentVideoDevice.deviceId)
+                var newVideoDevice = videoDevices.filter(device => device.deviceId !== this.state.currentVideoDevice.deviceId)
 
-    //             if (newVideoDevice.length > 0) {
-    //                 // Creating a new publisher with specific videoSource
-    //                 // In mobile devices the default and first camera is the front one
-    //                 var newPublisher = this.OV.initPublisher(undefined, {
-    //                     videoSource: newVideoDevice[0].deviceId,
-    //                     publishAudio: true,
-    //                     publishVideo: true,
-    //                     mirror: true
-    //                 });
+                if (newVideoDevice.length > 0) {
+                    // Creating a new publisher with specific videoSource
+                    // In mobile devices the default and first camera is the front one
+                    var newPublisher = this.OV.initPublisher(undefined, {
+                        videoSource: newVideoDevice[0].deviceId,
+                        publishAudio: true,
+                        publishVideo: true,
+                        mirror: true
+                    });
 
-    //                 //newPublisher.once("accessAllowed", () => {
-    //                 await this.state.session.unpublish(this.state.mainStreamManager)
+                    //newPublisher.once("accessAllowed", () => {
+                    await this.state.session.unpublish(this.state.mainStreamManager)
 
-    //                 await this.state.session.publish(newPublisher)
-    //                 this.setState({
-    //                     currentVideoDevice: newVideoDevice[0],
-    //                     mainStreamManager: newPublisher,
-    //                     publisher: newPublisher,
-    //                 });
-    //             }
-    //         }
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // }
+                    await this.state.session.publish(newPublisher)
+                    this.setState({
+                        currentVideoDevice: newVideoDevice[0],
+                        mainStreamManager: newPublisher,
+                        publisher: newPublisher,
+                    });
+                }
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     render() {
         const mySessionId = this.state.mySessionId;
