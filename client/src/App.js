@@ -7,10 +7,12 @@ import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
 
 // page_info
-import MainScreen from './page_info/MainScreen';
+// import MainScreen from './page_info/MainScreen';
 
 // ★ TODO : 서버 url 변경 필요
-const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
+// const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
+const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://demos.openvidu.io/';
+
 
 // ★ TODO : APP 컴포넌트 세부 사항 수정 필요
 class App extends Composnent {
