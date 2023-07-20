@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+// zustand
+import useStore from './store';
+
 // OpenVidu
 import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
 
 // page_info
-// import MainScreen from './page_info/MainScreen';
+import MainScreen from './page_info/MainScreen';
 
 // ★ TODO : 서버 url 변경 필요
 // const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
