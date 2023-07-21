@@ -1,5 +1,5 @@
 // 상태 관리 라이브러리로 'zustand' 사용
-import create from "zustand";
+import {create} from "zustand";
 import axios from "axios";
 
 // ★ TODO : 서버 url 변경 필요
@@ -46,20 +46,6 @@ const useStore = create((set) => ({
         }),
       }));
     },
-  
-    // 생략
-  
-    myUserID: "none",
-    set_myUserID: (input) => set({ myUserID: input }),
-    
-    cur_time: 1000000,
-    set_Curtime: (input) => set({ cur_time: input }),
-  
-    time_state: "no_change",
-    set_time_change: (input) => set({ time_state: input }),
-  
-    cnt_answer: 0,
-    set_CntAns: (input) => set(() => ({ cnt_answer: input })),
   
     // 생략
 

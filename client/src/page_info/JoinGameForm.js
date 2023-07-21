@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-function JoinGameForm(props) {
+export default function JoinGameForm(props) {
     // TODO: Implement form handlers and form submit
     return (
         <div className="container_before_game">
@@ -44,5 +44,3 @@ function JoinGameForm(props) {
           </div>
     );
 }
-
-export default JoinGameForm;

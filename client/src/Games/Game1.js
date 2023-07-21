@@ -3,10 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Game1.css';
 
 // components
-import UserVideoComponent from '../UserVideoComponent';
+import UserVideoComponent from '../Openvidu/UserVideoComponent';
 
 // store
-import { useStore } from '../store';
+import useStore from '../store';
 
 // sound
 
