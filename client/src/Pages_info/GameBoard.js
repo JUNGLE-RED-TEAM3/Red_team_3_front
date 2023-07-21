@@ -3,9 +3,9 @@
 import React from 'react';
 
 // Game1, 2, 3 컴포넌트 import
-import Game1 from '../Games/Game1';
-import Game2 from '../Games/Game2';
-import Game3 from '../Games/Game3';
+import Game1 from '../Game1/Game1';
+import Game2 from '../Game2/Game2';
+import Game3 from '../Game3/Game3';
 
 
 function GameBoard(props) {

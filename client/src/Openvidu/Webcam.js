@@ -10,10 +10,10 @@ import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
 
 // page_info
-import JoinGameForm from '../page_info/JoinGameForm';
-import WaitingRoom from '../page_info/WaitingRoom';
-import GameBoard from '../page_info/GameBoard';
-import ResultScreen from '../page_info/ResultScreen';
+import JoinGameForm from '../Pages_info/JoinGameForm';
+import WaitingRoom from '../Pages_info/WaitingRoom';
+import GameBoard from '../Pages_info/GameBoard';
+import ResultScreen from '../Pages_info/ResultScreen';
 
 // ★ TODO : 서버 url 변경 필요
 // const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
@@ -34,6 +34,7 @@ class Webcam extends Component {
             subscribers: [],
         };
 
+        // 메소드가 
         this.joinSession = this.joinSession.bind(this);
         this.leaveSession = this.leaveSession.bind(this);
         this.switchCamera = this.switchCamera.bind(this);

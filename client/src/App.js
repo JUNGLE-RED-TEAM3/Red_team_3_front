@@ -10,10 +10,10 @@ import useStore from './store';
 // import UserVideoComponent from './UserVideoComponent';
 
 // page_info
-import JoinGameForm from './page_info/JoinGameForm';
-import WaitingRoom from './page_info/WaitingRoom';
-import GameBoard from './page_info/GameBoard';
-import ResultScreen from './page_info/ResultScreen';
+import JoinGameForm from './Pages_info/JoinGameForm';
+import WaitingRoom from './Pages_info/WaitingRoom';
+import GameBoard from './Pages_info/GameBoard';
+import ResultScreen from './Pages_info/ResultScreen';
 
 // ★ TODO : 서버 url 변경 필요
 // const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
@@ -24,14 +24,13 @@ function App() {
 
     return (
         <>
-        <h1>게임 참여 전 화면</h1>
         {/* 게임 참여 전 화면 */}
         <JoinGameForm />
 
         {/* 대기방 입장 - 게임 진행(3가지) - 게임 결과 화면 */}
-        <WaitingRoom />
+        {/* <WaitingRoom />
         <GameBoard />
-        <ResultScreen />
+        <ResultScreen /> */}
         </>
     );
 
