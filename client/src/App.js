@@ -17,7 +17,7 @@ import ResultScreen from './page_info/ResultScreen';
 
 // ★ TODO : 서버 url 변경 필요
 // const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
-const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://demos.openvidu.io/';
+const APPLICATION_SERVER_URL = 'https://squidcanvas.shop/';
 
 // ★ TODO : 단계별 게임 진행이 가능하도록 수정 필요
 function App() {
