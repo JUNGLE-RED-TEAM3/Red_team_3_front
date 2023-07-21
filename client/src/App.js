@@ -10,7 +10,10 @@ import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
 
 // page_info
-import MainScreen from './page_info/MainScreen';
+import JoinGameForm from './page_info/JoinGameForm';
+import WaitingRoom from './page_info/WaitingRoom';
+import GameBoard from './page_info/GameBoard';
+import ResultScreen from './page_info/ResultScreen';
 
 // ★ TODO : 서버 url 변경 필요
 // const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
@@ -18,7 +21,7 @@ const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'htt
 
 
 // ★ TODO : APP 컴포넌트 세부 사항 수정 필요
-class App extends Composnent {
+class App extends Component {
     constructor(props) {
         super(props);
 
@@ -233,95 +236,24 @@ class App extends Composnent {
     }
 
     render() {
-        const mySessionId = this.state.mySessionId;
-        const myUserName = this.state.myUserName;
-
         return (
-            <div className="container">
-                {this.state.session === undefined ? (
-                    <div id="join">
-                        <div id="img-div">
-                            <img src="resources/images/openvidu_grey_bg_transp_cropped.png" alt="OpenVidu logo" />
-                        </div>
-                        <div id="join-dialog" className="jumbotron vertical-center">
-                            <h1> Join a video session </h1>
-                            <form className="form-group" onSubmit={this.joinSession}>
-                                <p>
-                                    <label>Participant: </label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        id="userName"
-                                        value={myUserName}
-                                        onChange={this.handleChangeUserName}
-                                        required
-                                    />
-                                </p>
-                                <p>
-                                    <label> Session: </label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        id="sessionId"
-                                        value={mySessionId}
-                                        onChange={this.handleChangeSessionId}
-                                        required
-                                    />
-                                </p>
-                                <p className="text-center">
-                                    <input className="btn btn-lg btn-success" name="commit" type="submit" value="JOIN" />
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                ) : null}
-
-                {this.state.session !== undefined ? (
-                    <div id="session">
-                        <div id="session-header">
-                            <h1 id="session-title">{mySessionId}</h1>
-                            <input
-                                className="btn btn-large btn-danger"
-                                type="button"
-                                id="buttonLeaveSession"
-                                onClick={this.leaveSession}
-                                value="Leave session"
-                            />
-                            <input
-                                className="btn btn-large btn-success"
-                                type="button"
-                                id="buttonSwitchCamera"
-                                onClick={this.switchCamera}
-                                value="Switch Camera"
-                            />
-                        </div>
-
-                        {this.state.mainStreamManager !== undefined ? (
-                            <div id="main-video" className="col-md-6">
-                                <UserVideoComponent streamManager={this.state.mainStreamManager} />
-
-                            </div>
-                        ) : null}
-                        <div id="video-container" className="col-md-6">
-                            {this.state.publisher !== undefined ? (
-                                <div className="stream-container col-md-6 col-xs-6" onClick={() => this.handleMainVideoStream(this.state.publisher)}>
-                                    <UserVideoComponent
-                                        streamManager={this.state.publisher} />
-                                </div>
-                            ) : null}
-                            {this.state.subscribers.map((sub, i) => (
-                                <div key={sub.id} className="stream-container col-md-6 col-xs-6" onClick={() => this.handleMainVideoStream(sub)}>
-                                    <span>{sub.id}</span>
-                                    <UserVideoComponent streamManager={sub} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : null}
-            </div>
+          <>
+            {this.state.session === undefined ? (
+                // 1) 게임 참여 전 화면
+                <JoinGameForm />
+            ) : useStore.getState().cur_round === -1 ? (
+                // 2) 대기방 화면
+                <WaitingRoom />
+            ) : useStore.getState().cur_round === 0 ? (
+                // 3) 게임 진행 화면
+                <GameBoard />
+            ) : (
+                // 4) 게임 결과 화면 (useStore.getState().cur_turn_states === "end")
+                <ResultScreen />
+            )}
+          </>
         );
     }
-
 
     /**
      * --------------------------------------------
