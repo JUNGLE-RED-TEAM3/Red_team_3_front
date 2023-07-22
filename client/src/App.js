@@ -26,8 +26,6 @@ function App() {
 
     return (
         <>
-        
-
         {/* 게임 참여 전 화면 */}
         <JoinGameForm />
         

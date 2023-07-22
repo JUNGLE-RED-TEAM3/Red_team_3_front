@@ -143,7 +143,7 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
   padding: 30px;
-  display: block; /* none으로 변경! */
+  display: none; /* none으로 변경! */
 }
 
 .container-modal {
@@ -176,7 +176,7 @@
   align-items: center;
   max-width: 80%;
   margin: 0 auto;
-  padding: 20px;
+  padding: auto;
   border: 3px solid #7f0000; /* 붉은색 */
   border-radius: 5px;
   background-color: black;
@@ -184,7 +184,7 @@
 
 /* input 스타일 */
 .join-form input {
-  width: 500px;
+  width: 100%;
   padding: 10px;
   margin: 5px 0;
   border: 2px solid #7f0000; 
