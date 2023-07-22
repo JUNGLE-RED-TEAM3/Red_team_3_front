@@ -1,63 +1,86 @@
 // 1) 게임 참여 전 화면 : 사용자 이름과 세션 ID 입력 받는 폼 컴포넌트
 // 사용자 이름과 세선 ID를 입력 받는 form
 
-import React from 'react';
+import React, { useState } from 'react';
 import './JoinGameForm.css';
 
-const JoinGameForm = (props) => {
-    // TODO: Implement form handlers and form submit
-    return (
-      // codepen 사용
-      <div id="container">
-        <div className="card-container">
-            <img src="https://see.fontimg.com/api/renderfont4/1GMVL/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/U3F1aWQgR2FtZSBDYXJk/game-of-squids.png"
-            alt="Squid fonts" id="squid-title"/>
-            <img width="200" height="100"src="https://www.pngplay.com/wp-content/uploads/13/Squid-Game-Play-Card-Circle-Triangle-Sqaure-PNG.png" alt=""
-            id="logo" />
+const JoinGameForm = () => {
+
+  let [myUserName, setMyUserName] = useState(''); // 사용자 이름
+  let [mySessionId, setMySessionId] = useState(''); // 세션 ID
+
+  const joinSession = (e) => {
+    e.preventDefault();
+    // form 입력 내용을 받아서, 서버로 전송
+    // 서버에서는 해당 세션에 참여하는 사용자 목록에 추가
+    // 이후에 유저는 방 입장 (WaitingRoom.js로 라우트)
+  }
+  
+  const handleChangeUserName = (e) => {
+    // 사용자 이름 입력란에 입력된 내용을 state에 저장
+  }
+  
+  const handleChangeSessionId = (e) => {
+    // 세션 ID 입력란에 입력된 내용을 state에 저장
+  }
+
+  return (
+    <div className="wrapper">
+      {/* 접속 시, 첫 화면 */}
+      <div className="container-main">
+        <div className="container-main-left">
+            <h1 className="game-title">Squid Canvas</h1>
+            <img className="logo" width="200" height="100"
+              src="https://www.pngplay.com/wp-content/uploads/13/Squid-Game-Play-Card-Circle-Triangle-Sqaure-PNG.png" 
+              alt=""/>
         </div>
         <div className="start-button">
-          <a href="#" className="neon-button">START</a>
+          <button className="neon-button" >START</button>
         </div>
-
-        {/* <div className="container_before_game">
-            <div id="join">
-              <form className="form-group" onSubmit={this.joinSession}>
-                <p>
-                  <input
-                    className="form-control"
-                    className="participant"
-                    type="text"
-                    id="userName"
-                    value={myUserName}
-                    onChange={this.handleChangeUserName}
-                    required
-                  />
-                </p>
-                <p>
-                  <input
-                    className="form-control"
-                    className="roomname"
-                    type="text"
-                    id="sessionId"
-                    value={mySessionId}
-                    onChange={this.handleChangeSessionId}
-                    required
-                  />
-                </p>
-                <p className="text-center">
-                  <input
-                    className="enter_button"
-                    name="commit"
-                    type="submit"
-                    value=""
-                  />
-                </p>
-              </form>
-            </div>
-          </div>
-        </div> */}
       </div>
-    );
+      
+      {/* 버튼 클릭하면, 닉네임/입장코드 입력 모달창 뜸 */}
+      {/* <div className="container-modal-bg">
+        <div className="container-modal">
+
+          <div>
+            <form className="join-form" onSubmit={joinSession}>
+              <p>
+                <input
+                  type="text"
+                  id="userName"
+                  placeholder='닉네임'
+                  value={myUserName}
+                  onChange={handleChangeUserName}
+                  required
+                />
+              </p>
+              <p>
+                <input
+                  type="text"
+                  id="sessionId"
+                  placeholder='입장 코드'
+                  value={mySessionId}
+                  onChange={handleChangeSessionId}
+                  required
+                />
+              </p>
+              <button>Join</button>
+            </form>
+          </div>
+
+        </div>
+      </div> */}
+      
+      {/* <script>
+        $('.neon-button').on('click', function(){
+          $('.container-modal-bg').addClass('show-modal')
+        });
+      </script> */}
+
+
+    </div>
+  );
 }
 
 export default JoinGameForm;

@@ -1,125 +1,216 @@
-:root {
-    --clr-neon: hsl(317 100% 54%);
-    --clr-bg: hsl(323 21% 16%);
-    margin: 0;
-    padding: 0;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #231f20;
-    font-family: "Balsamiq Sans", cursive;
-    color: var(--clr-neon);
-    background: var(--clr-bg);
-  }
-  .neon-button {
-    font-size: 4rem;
-  
-    display: inline-block;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--clr-neon);
-    border: var(--clr-neon) 0.125em solid;
-    padding: 0.25em 1em;
-    border-radius: 0.25em;
-  
-    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-  
-    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
-  
-    position: relative;
-    text-align: center;
-  }
-  
-  .neon-button::before {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    background: var(--clr-neon);
-    top: 120%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  
-    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
-    filter: blur(1em);
-    opacity: 0.7;
-  }
-  
-  .neon-button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 2em 0.5em var(--clr-neon);
-    opacity: 0;
-    background-color: var(--clr-neon);
-    z-index: -1;
-    transition: opacity 100ms linear;
-  }
-  
-  .neon-button:hover,
-  .neon-button:focus {
-    color: var(--clr-bg);
-    text-shadow: none;
-  }
-  
-  .neon-button:hover::before,
-  .neon-button:focus::before {
-    opacity: 1;
-  }
-  .neon-button:hover::after,
-  .neon-button:focus::after {
-    opacity: 1;
-  }
-  #container{
-    width: max-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .card-container{
-    width: min-content;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    justify-items: center;
-    width: 45%;
-  }
-  a{
-    display: block;
-  }
-  #squid-title{
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  #logo{
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .start-button{
-    margin-top: 1rem;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .start-button a{
-    width: 70%;
-    height: 70%;
-  }
-a{
-font-family:'Press Start 2P', cursive;
-  
+/* 여기에 정의된 css는 이 .css를 import 한 파일에만 적용됨 */
+:root { /* 해당 css 파일 내에서의 전역 범위 */
+  --clr-neon: hsl(317 100% 54%);
+  --clr-bg: hsl(323 21% 16%);
+  /* 위 2개는 변수로 정의 */
+  margin: 0;
+  padding: 0;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*** 접속 시 첫 화면 ***/
+
+.wrapper {
+  display: flex;
+  justify-content: center; /*내부 자식 요소들을 수평 방향, 가운데 정렬*/
+  align-items: center; /*내부 자식 요소들을 수직 방향, 가운데 정렬*/
+  height: 100vh; /*viewport의 100% (브라우저 창과 같은 높이)*/
+  background: #231f20;
+  font-family: "Balsamiq Sans", cursive;
+  color: var(--clr-neon);
+  background: var(--clr-bg);
+}
+
+.container-main {
+  width: 85%; 
+  display: flex;
+  margin: auto;
+  padding: auto;
+  justify-content: center; 
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container-main-left{
+  width: min-content; /*내부의 콘텐츠가 차지하는 공간만큼 (최소한으로) 너비 조절*/
+  display: flex; 
+  flex-flow: row wrap; /*자식 요소들 배치를 가로 방향으로, 오버될 때는 다음 줄로 래핑*/
+  justify-content: center;
+  justify-items: center;
+  width: 45%;
+}
+
+.game-title {
+  font-size: 3rem;
+  font-family: "Press Start 2P", cursive; 
+  color: white;
+  text-align: center;
+}
+
+.logo{
+  display: block;
+  width: 100%;
+  padding-top: 1rem;
+  height: auto;
+}
+
+.start-button{
+  margin-top: 1rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neon-button {
+  font-size: 3rem;
+  display: inline-block; /*요소들을 수평으로 배치, 너비/높이 조정 가능*/
+  cursor: pointer; /*마우스 커서가 올라갔을 때, 손가락 모양으로 변경*/
+  text-decoration: none; /*텍스트에 밑줄 없애기*/
+  color: var(--clr-neon);
+  border: var(--clr-neon) 0.125em solid;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 0.25em;
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  /* 두 개의 그림자 효과 (첫째는 약간의 블러 효과, 둘째는 더 강한 블러 효과)
+     텍스트 색상을 현재 색상(--crl-neon)으로 설정 */
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+  /* 두 개의 내부 그림자 효과 */
+  position: relative;
+  text-align: center;
+}
+
+/* .neon-button 클래스를 가진 버튼 요소가 화면에 렌더링되는 동안에만 
+   :: 가상 요소가 함께 표시됨 */
+.neon-button::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-neon);
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  filter: blur(1em);
+  opacity: 0.7;
+}
+
+.neon-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  opacity: 0;
+  background-color: var(--clr-neon);
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
+
+.neon-button:hover,
+.neon-button:focus {
+  color: var(--clr-bg);
+  text-shadow: none;
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before {
+  opacity: 1;
+}
+.neon-button:hover::after,
+.neon-button:focus::after {
+  opacity: 1;
+}
+
+
+/*** 닉네임/입장코드 입력 모달창 ***/
+.container-modal-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  padding: 30px;
+  display: block; /* none으로 변경! */
+}
+
+.container-modal {
+  background: black; 
+  border-radius: 10px;
+  padding: 30px;
+  margin: auto;
+  width: 70%;
+  height: 60%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 검은색 그림자 효과 */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.show-modal {
+  display: block; 
+}
+
+.join-form{
+  font-family: "Happiness-Sans-Title";
+  font-size: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #7f0000; /* 붉은색 */
+  border-radius: 5px;
+  background-color: black;
+}
+
+/* input 스타일 */
+.join-form input {
+  width: 500px;
+  padding: 10px;
+  margin: 5px 0;
+  border: 2px solid #7f0000; 
+  border-radius: 5px;
+  background-color: black; 
+}
+
+/* 버튼 스타일 */
+.join-form button {
+  margin: 1rem;
+  padding: 10px 20px;
+  background-color: #7f0000; 
+  color: whitesmoke; 
+  border: 1px solid #7f0000; 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.join-form button:hover {
+  background-color: #a50000; /* 버튼 호버 시 눈금 효과를 연출하기 위해 조금 더 진한 붉은색으로 변경 */
+}
+
+/* 한글 폰트 사용 */
+@font-face {
+	font-family: "Happiness-Sans-Title";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
+		format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
