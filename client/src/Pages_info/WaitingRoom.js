@@ -46,7 +46,7 @@ function WaitingRoom() {
              </section>
 
              <div className="button">
-                <button className="start-button">시작</button>
+                <button className="start_button">시작</button>
             </div>
             
         </div>
