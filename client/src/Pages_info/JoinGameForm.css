@@ -14,16 +14,19 @@
 }
 
 /*** 접속 시 첫 화면 ***/
-
+/* JoinGameForm만 다른 배경으로 띄우기 위해, wrapper 클래스를 활용함 */
 .wrapper {
+  /* 화면 전체로 채우기 (얘만 다른 배경화면) */
+  width: 100vw; /*viewport의 100% (브라우저 창과 같은 너비)*/
+  height: 100vh; /*viewport의 100% (브라우저 창과 같은 높이)*/
+
   display: flex;
   justify-content: center; /*내부 자식 요소들을 수평 방향, 가운데 정렬*/
   align-items: center; /*내부 자식 요소들을 수직 방향, 가운데 정렬*/
-  height: 100vh; /*viewport의 100% (브라우저 창과 같은 높이)*/
   background: #231f20;
   font-family: "Balsamiq Sans", cursive;
   color: var(--clr-neon);
-  background: var(--clr-bg);
+  background-color: var(--clr-bg);
 }
 
 .container-main {

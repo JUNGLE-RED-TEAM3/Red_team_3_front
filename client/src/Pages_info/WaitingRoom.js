@@ -21,7 +21,7 @@ function WaitingRoom() {
     ];
 
     return (
-        <div className="wrapper">
+        <div className="temp">
 
             <header className="title">
                 <h1>Squid Canvas</h1>    

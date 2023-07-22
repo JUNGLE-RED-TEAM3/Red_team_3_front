@@ -12,6 +12,14 @@ nav {
 	border-top-right-radius: 0 !important;
 	border-top-left-radius: 0 !important;
 }
+/* 추가 */
+body {
+    background-color: black;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url("./Images/main-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
 
 .navbar-header {
 	width: 100%;

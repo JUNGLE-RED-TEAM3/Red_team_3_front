@@ -1,8 +1,10 @@
-// 1) 게임 참여 전 화면 : 사용자 이름과 세션 ID 입력 받는 폼 컴포넌트
-// 사용자 이름과 세선 ID를 입력 받는 form
+// 1. 홈 화면 : 접속 첫 화면 + 닉네임/입장코드 입력 모달창
 
 import React, { useState } from 'react';
 import './JoinGameForm.css';
+
+// import Images
+import logo from "../Images/start-logo.png"
 
 const JoinGameForm = () => {
 
@@ -25,17 +27,17 @@ const JoinGameForm = () => {
   }
 
   return (
-    <div className="wrapper">
+    <div className = "wrapper">
       {/* 접속 시, 첫 화면 */}
       <div className="container-main">
         <div className="container-main-left">
             <h1 className="game-title">Squid Canvas</h1>
             <img className="logo" width="200" height="100"
-              src="https://www.pngplay.com/wp-content/uploads/13/Squid-Game-Play-Card-Circle-Triangle-Sqaure-PNG.png" 
+              src={logo} 
               alt=""/>
         </div>
         <div className="start-button">
-          <button className="neon-button" >START</button>
+          <button className="neon-button">START</button>
         </div>
       </div>
       

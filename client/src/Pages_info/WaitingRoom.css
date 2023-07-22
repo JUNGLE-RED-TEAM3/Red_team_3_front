@@ -1,18 +1,18 @@
-.wrapper {
+/* .wrapper {
     background-color: black;
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url("https://images3.alphacoders.com/118/1181423.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-}
+} */
 
-.title {
+.header-title {
     text-align: center;
     width: 100%;
     height: 20vh;
   }
   
-  .title h1 {
+  .header-title h1 {
     font-family: "Balsamiq Sans", cursive;
     font-size: 3.5rem;
     color: #ff0000; /* 빨간색 색상 */
@@ -20,7 +20,7 @@
     margin-bottom: 0.5rem;
   }
   
-  .title h1::before {
+  .header-title h1::before {
     content: "🦑"; /* 오징어 이모지 추가 */
     display: inline-block;
     font-size: 4rem;
@@ -30,7 +30,7 @@
     text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
   }
   
-  .title h1::after {
+  .header-title h1::after {
     content: "🦑"; /* 오징어 이모지 추가 */
     display: inline-block;
     font-size: 4rem;
@@ -40,7 +40,7 @@
     text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
   }
 
-  .title {
+  .header-title {
     position: fixed;
     top: 10px;
   }
@@ -99,7 +99,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-family: "Happiness-Sans-Title";
   }
   
   /* 호버 효과 */
@@ -120,4 +119,18 @@
 		format("woff2");
 	font-weight: normal;
 	font-style: normal;
+}
+
+@media screen and (max-width : 992px) {
+  .temp {
+    float : left;
+    width : 50%;
+  }
+}
+
+@media screen and (max-width : 768px) {
+  .temp {
+    float : none;
+    width : 100%;
+  }
 }
