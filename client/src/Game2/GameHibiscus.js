@@ -3,7 +3,7 @@ import './GameHibiscus.css';
 
 const GameHibiscus = () => {
     return (
-        <div className="wrapper">
+        <div className="#">
             <div className='HibiscusHeader'>
                 <h1>SQUID-CANVAS 무궁화 꽃을 칠했습니다</h1>
             </div>

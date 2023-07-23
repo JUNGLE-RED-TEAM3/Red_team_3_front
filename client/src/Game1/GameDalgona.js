@@ -4,7 +4,7 @@ import './GameDalgona.css';
 
 const GameDalgona = () => {
     return( 
-    <div className="wrapper">
+    <div className="tt">
         <div className='DalgonaHeader'>
             <h1>SQUID-CANVAS 달고나 게임</h1>
         </div>
