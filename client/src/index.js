@@ -10,5 +10,5 @@ import GameHibiscus from './Game2/GameHibiscus';
 import WaitingRoom from './Pages_info/WaitingRoom';
 import Webcam from './Openvidu/Webcam';
 
-ReactDOM.render(<WaitingRoom />, document.getElementById('root'));
+ReactDOM.render(<Webcam />, document.getElementById('root'));
 registerServiceWorker();
