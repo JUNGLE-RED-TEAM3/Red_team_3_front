@@ -1,5 +1,6 @@
 import React from 'react';
 import './GameDalgona.css';
+import GameTimer from './GameTimer';
 
 // 지울 것
 import { useNavigate } from 'react-router-dom';
@@ -24,7 +25,9 @@ const GameDalgona = () => {
         </div>
         
         <div className='DalgonaNav'>
-            <div className='DalgonaNavTimer'>타이머</div>
+            <div className='DalgonaNavTimer'>
+                <GameTimer/>
+            </div>
             <div className='DalgonaNavStartCount'>시작인원 수</div>
             <div className='DalgonaNavSurviveCount'>생존인원 수</div>
         </div>
@@ -33,7 +36,7 @@ const GameDalgona = () => {
                 <h2>달고나 이미지화면</h2>
             </div>
             <div className='WebcamBox'>
-                <h2>웹캠</h2>
+                <img src='http://localhost:8000/video_feed' alt="video_feed" />
             </div>
         </div>
     </div>)

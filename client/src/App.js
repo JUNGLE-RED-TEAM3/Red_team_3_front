@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import { Route, Routes } from 'react-router-dom'; 
@@ -25,6 +25,13 @@ import './Pages_info/JoinGameForm.css';
 const APPLICATION_SERVER_URL = 'https://demos.openvidu.io/';
 
 function App() {
+
+    useEffect(() => {
+        fetch("/").then(
+          // response 객체의 json() 이용하여 json 데이터를 객체로 변화
+          res => res.json()
+        )
+      },[])
 
     return (
         <Routes>

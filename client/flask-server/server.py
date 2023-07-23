@@ -86,9 +86,10 @@ def get_frames():
         lmList,bbox = detector.findPosition(img, draw=False)#using function to find specific landmark position,draw false means no circles on landmarks
         
         if len(lmList)!=0:
-            #print(lmList)
+            # print(lmList)
             x1, y1 = lmList[8][1],lmList[8][2]# tip of index finger
             x2, y2 = lmList[12][1],lmList[12][2]# tip of middle finger
+            
             
             # 3. Check which fingers are up
             fingers = detector.fingersUp()
@@ -105,7 +106,7 @@ def get_frames():
                         drawColor = (255, 0, 255)
                     elif 290 < x1 < 350:#if i m clicking at blue brush
                         header = overlayList[1]
-                        drawColor = (255, 0, 0)
+                        drawColor = (255, 100, 0)
                     elif 410 < x1 < 480:#if i m clicking at green brush
                         header = overlayList[2]
                         drawColor = (0, 255, 0)
@@ -188,7 +189,7 @@ def get_frames():
         # num_channels = overlayList2[6].shape[2]
         # print(num_channels)
 
-        img = overlay_transparent(img, overlayList2[6], 230, 90, overlay_size=None)
+        img = overlay_transparent(img, overlayList2[6], 960, 540, overlay_size=(800, 800))
 
         # img[90:270,230:410]=overlayList2[5]
 
@@ -197,10 +198,10 @@ def get_frames():
             xx, yy = lmList1[8][1],lmList1[8][2]# tip of index finger
             cv2.circle(img, (xx, yy), 12, (255,255,255), cv2.FILLED)#selection mode is represented as rectangle
 
-        # cv2.imshow("Image", img)
+        cv2.imshow("Image", img)
         # # cv2.imshow("Canvas", imgCanvas)
         # # cv2.imshow("Inv", imgInv)
-        # cv2.waitKey(1)
+        cv2.waitKey(1)
 
         # img를 JPEG로 인코딩합니다. 성공여부를 불리언값으로 리턴, 그리고 인코딩된 이미지(Numpy 배열)를 리턴합니다.
         ret, frame = cv2.imencode('.jpg', img)

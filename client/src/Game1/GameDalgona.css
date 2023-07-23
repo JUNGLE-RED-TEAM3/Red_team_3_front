@@ -54,37 +54,44 @@
 .DalgonaFrame{
     display: flex;
     flex-direction: row;
-    width: 100%; /* 전체 너비에 맞게 조정 */
-    max-width: 1400px; /* 데스크톱 화면 크기에 최대 너비 지정 */
+    width: 1400px;
+    height: 500px;
     margin: auto;
     justify-content: space-between;
 }
 
-.DalgonaFrame .DalgonaBox,
-.DalgonaFrame .WebcamBox {
+.DalgonaFrame .DalgonaBox{
     color: #16db68;
     border: 5px solid #ea4884;
-    width: 100%; /* 전체 너비에 맞게 조정 */
+    width: 700px;
     height: 400px;
     text-align: center;
+
 }
 
-.DalgonaFrame .DalgonaBox:hover,
-.DalgonaFrame .WebcamBox:hover {
+.DalgonaFrame .DalgonaBox:hover{
     color: #16db68;
     background-color: bisque;
 }
 
-/* 태블릿 및 데스크톱 기기에 대한 미디어 쿼리 */
-@media screen and (max-width: 992px) {
-    .DalgonaFrame {
-        flex-direction: column;
-        height: auto;
-    }
 
-    .DalgonaNav,
-    .DalgonaFrame .DalgonaBox,
-    .DalgonaFrame .WebcamBox {
-        width: 100%; /* 전체 너비에 맞게 조정 */
-    }
+.DalgonaFrame .WebcamBox{
+    color: #16db68;
+    border: 5px solid #ea4884;
+    width: 700px;
+    height: 400px;
+    text-align: center;
+    display: flex;
+
+}
+
+.DalgonaFrame .WebcamBox img{
+    width: 700px;
+    height: 400px;
+}
+
+
+.DalgonaFrame .WebcamBox:hover{
+    color: #16db68;
+    background-color: bisque;
 }

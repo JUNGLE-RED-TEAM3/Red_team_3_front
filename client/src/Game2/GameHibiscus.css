@@ -1,11 +1,11 @@
-/* 모든 화면 크기에 대한 기본 스타일 */
-.HibiscusHeader {
+.HibiscusHeader{
     color: #16db68;
     text-align: center;
     height: 80px;
 }
 
-.HibiscusHeader h1 {
+.HibiscusHeader h2
+{
     border: 3px solid #16db68;
     border-radius: 20px;
     width: 700px;
@@ -13,25 +13,36 @@
     margin: auto;
 }
 
-.HibiscusFrame {
+
+/* 카메라 프레임 */
+.HibiscusFrame{
     border: 5px solid #ea4884;
     display: flex;
     flex-direction: row;
-    width: 100%; /* 전체 너비에 맞게 조정 */
-    max-width: 1400px; /* 데스크톱 화면 크기에 최대 너비 지정 */
+    width: 1400px;
     height: 600px;
     margin: auto;
     justify-content: space-between;
 }
 
-.HibiscusFrame .HibiscusWebcambox {
+/* 왼쪽 큰 웹캠 박스 */
+.HibiscusFrame .HibiscusWebcambox{
     color: #16db68;
     border: 5px solid #ea4884;
-    width: 100%; /* 전체 너비에 맞게 조정 */
+    width: 1200px;
     text-align: center;
+    display: flex;
 }
 
-.HibiscusFrame .HIbiscusNavbox {
+.HibiscusFrame .HibiscusWebcambox img{
+    
+    width: 1200px;
+    height: 100%;
+}
+
+
+/* 오른쪽 작은 네브 박스 */
+.HibiscusFrame .HIbiscusNavbox{
     width: 200px;
     border: 5px solid #ea4884;
     display: flex;
@@ -39,15 +50,37 @@
     justify-content: space-between;
 }
 
-.HibiscusFrame .HIbiscusNavbox .HibiscusNavTimer,
-.HibiscusFrame .HIbiscusNavbox .HibiscusNavStartCount,
-.HibiscusFrame .HIbiscusNavbox .HibiscusNavSurviveCount {
+/* NAV박스 위치 순서
+    1. 타이머
+    2. 시작인원 수
+    3. 생존인원 수
+*/
+.HibiscusFrame .HIbiscusNavbox .HibiscusNavTimer{
     color: #16db68;
-    border: 5px solid #ea4884;
-    width: 200px;
+    border-bottom: 5px solid #ea4884;
+    width:200px;
     height: 200px;
     text-align: center;
 }
+
+.HibiscusFrame .HIbiscusNavbox .HibiscusNavStartCount{
+    color: #16db68;
+    border-top: 5px solid #ea4884;
+    border-bottom: 5px solid #ea4884;
+    width:200px;
+    height: 200px;
+    text-align: center;
+}
+
+.HibiscusFrame .HIbiscusNavbox .HibiscusNavSurviveCount {
+    color: #16db68;
+    border-top: 5px solid #ea4884;
+    width:200px;
+    height: 200px;
+    text-align: center;
+} 
+
+
 
 /* 박스 호버 기능 */
 .HibiscusFrame .HibiscusWebcambox:hover{
@@ -69,33 +102,3 @@
     color: #16db68;
     background-color: #16db68;
 }
-
-
-/* 태블릿 및 큰 모바일 기기에 대한 미디어 쿼리 */
-@media screen and (max-width: 1024px) {
-    .HibiscusFrame {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .HibiscusFrame .HIbiscusNavbox {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .HibiscusFrame .HibiscusWebcambox,
-    .HibiscusFrame .HIbiscusNavbox .HibiscusNavTimer,
-    .HibiscusFrame .HIbiscusNavbox .HibiscusNavStartCount,
-    .HibiscusFrame .HIbiscusNavbox .HibiscusNavSurviveCount {
-        width: 100%;
-    }
-}
-
-/* 작은 모바일 기기에 대한 미디어 쿼리 */
-@media screen and (max-width: 768px) {
-    .HibiscusHeader h1 {
-        width: 100%;
-    }
-}
-
-/* 필요에 따라 특정 브레이크포인트에 대한 미디어 쿼리를 추가할 수 있습니다 */
