@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Webcam.css';
 import axios from 'axios';
 
+// 월요일 데모 이후 버릴 것!
+import TempButton from './TempButton';
+
 // OpenVidu
 import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';
@@ -18,6 +21,7 @@ const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'htt
 
 // ★ TODO : APP 컴포넌트 세부 사항 수정 필요
 class Webcam extends Component {
+
     constructor(props) {
         super(props);
 
@@ -31,7 +35,6 @@ class Webcam extends Component {
             subscribers: [],
         };
 
-        // 메소드가 
         this.joinSession = this.joinSession.bind(this);
         this.leaveSession = this.leaveSession.bind(this);
         this.switchCamera = this.switchCamera.bind(this);
@@ -39,6 +42,7 @@ class Webcam extends Component {
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
         this.handleMainVideoStream = this.handleMainVideoStream.bind(this);
         this.onbeforeunload = this.onbeforeunload.bind(this);
+    
     }
 
     componentDidMount() {
@@ -294,6 +298,10 @@ class Webcam extends Component {
                                 onClick={this.switchCamera}
                                 value="Switch Camera"
                             />
+                            
+                            {/* 월요일 데모 이후 버릴 것! */}
+                            <TempButton />
+
                         </div>
 
                         {this.state.mainStreamManager !== undefined ? (

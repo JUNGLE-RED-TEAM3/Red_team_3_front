@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter> 
+        <BrowserRouter>
             <App />
         </BrowserRouter>
     </React.StrictMode>,    

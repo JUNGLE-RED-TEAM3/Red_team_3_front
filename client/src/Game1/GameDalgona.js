@@ -1,13 +1,28 @@
 import React from 'react';
 import './GameDalgona.css';
 
+// 지울 것
+import { useNavigate } from 'react-router-dom';
+
+
 
 const GameDalgona = () => {
+
+    // 지울 것
+    const Navigate = useNavigate();
+
     return( 
     <div className="tt">
         <div className='DalgonaHeader'>
             <h1>SQUID-CANVAS 달고나 게임</h1>
         </div>
+
+        {/* 지울 것 */}
+        <div>
+            <button className='btn btn-large btn-primary'
+                    onClick={(e)=>{Navigate('/Game2')}}>NEXT PAGE</button>
+        </div>
+        
         <div className='DalgonaNav'>
             <div className='DalgonaNavTimer'>타이머</div>
             <div className='DalgonaNavStartCount'>시작인원 수</div>

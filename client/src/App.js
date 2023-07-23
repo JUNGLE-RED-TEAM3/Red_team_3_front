@@ -6,6 +6,9 @@ import { Route, Routes } from 'react-router-dom';
 // zustand
 import useStore from './store';
 
+// openvidu (임시로 라우팅 함) -> 월요일 데모 이후 지울 것!
+import Webcam from './Openvidu/Webcam';
+
 // page_info
 import JoinGameForm from './Pages_info/JoinGameForm';
 import WaitingRoom from './Pages_info/WaitingRoom';
@@ -25,8 +28,11 @@ function App() {
 
     return (
         <Routes>
-            <Route path="/" element={<JoinGameForm />} />             {/* "/" 경로에 JoinGameForm 컴포넌트 설정 */}
-            <Route path="/WaitingRoom" element={<WaitingRoom />} />   {/* "/WaitingRoom" 경로에 WaitingRoom 컴포넌트 설정 */}
+            {/* 월요일 데모 이후 지울 것! */}
+            <Route path="/" element={<Webcam />} />
+            {/* <Route path="/" element={<JoinGameForm />} />             
+            <Route path="/WaitingRoom" element={<WaitingRoom />} />    */}
+        
             <Route path="/Game1" element={<GameDalgona />} />         {/* "/Game1" 경로에 GameDalgona 컴포넌트 설정 */}
             <Route path="/Game2" element={<GameHibiscus />} />        {/* "/Game2" 경로에 GameHibiscus 컴포넌트 설정 */}
 

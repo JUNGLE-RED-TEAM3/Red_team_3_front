@@ -7,9 +7,10 @@ const GameHibiscus = () => {
             <div className='HibiscusHeader'>
                 <h1>SQUID-CANVAS 무궁화 꽃을 칠했습니다</h1>
             </div>
-            {/* <div className='HibiscusNav'>
+            <button>
                 
-            </div> */}
+            </button>
+
             <div className='HibiscusFrame'>
                 <div className='HibiscusWebcambox'>
                     <h2>웹캠</h2>

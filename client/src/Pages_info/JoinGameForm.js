@@ -1,7 +1,7 @@
 // 1. 홈 화면 : 접속 첫 화면 + 닉네임/입장코드 입력 모달창
 import React from 'react';
 import useStore from '../store';
-import { useNavigate } from 'react-router-dom'; // useHistory 대신 useNavigate를 import
+import { useNavigate } from 'react-router-dom';
 
 // CSS
 import './JoinGameForm.css';
