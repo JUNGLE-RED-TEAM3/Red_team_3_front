@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './Webcam.css';
 import axios from 'axios';
 
-// zustand
-// import useStore from '../store';
-
 // OpenVidu
 import { OpenVidu } from 'openvidu-browser';
 import UserVideoComponent from './UserVideoComponent';

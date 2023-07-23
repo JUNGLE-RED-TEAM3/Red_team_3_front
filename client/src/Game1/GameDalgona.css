@@ -1,11 +1,3 @@
-/* .wrapper {
-    background-color: black;
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url("https://images3.alphacoders.com/118/1181423.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
-} */
-
 .DalgonaHeader{
     color: #16db68;
     text-align: center;
@@ -62,51 +54,37 @@
 .DalgonaFrame{
     display: flex;
     flex-direction: row;
-    width: 1400px;
-    height: 500px;
+    width: 100%; /* 전체 너비에 맞게 조정 */
+    max-width: 1400px; /* 데스크톱 화면 크기에 최대 너비 지정 */
     margin: auto;
     justify-content: space-between;
 }
 
-.DalgonaFrame .DalgonaBox{
+.DalgonaFrame .DalgonaBox,
+.DalgonaFrame .WebcamBox {
     color: #16db68;
     border: 5px solid #ea4884;
-    width: 600px;
+    width: 100%; /* 전체 너비에 맞게 조정 */
     height: 400px;
     text-align: center;
-
 }
 
-.DalgonaFrame .DalgonaBox:hover{
+.DalgonaFrame .DalgonaBox:hover,
+.DalgonaFrame .WebcamBox:hover {
     color: #16db68;
     background-color: bisque;
 }
 
-
-.DalgonaFrame .WebcamBox{
-    color: #16db68;
-    border: 5px solid #ea4884;
-    width: 600px;
-    height: 400px;
-    text-align: center;
-
-}
-
-.DalgonaFrame .WebcamBox:hover{
-    color: #16db68;
-    background-color: bisque;
-}
-
-@media screen and (max-width : 992px) {
-    .wrapper {
-      float : left;
-      width : 50%;
+/* 태블릿 및 데스크톱 기기에 대한 미디어 쿼리 */
+@media screen and (max-width: 992px) {
+    .DalgonaFrame {
+        flex-direction: column;
+        height: auto;
     }
-  }
-  
-  @media screen and (max-width : 768px) {
-    .wrapper {
-      float : none;
-      width : 100%;
+
+    .DalgonaNav,
+    .DalgonaFrame .DalgonaBox,
+    .DalgonaFrame .WebcamBox {
+        width: 100%; /* 전체 너비에 맞게 조정 */
     }
-  }
+}
