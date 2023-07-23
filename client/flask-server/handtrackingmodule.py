@@ -1,6 +1,3 @@
-for (let i = 0; i < 5; i++) {
-  console.log('Hello world!');
-}
 import cv2
 import mediapipe as mp
 import time
