@@ -7,11 +7,11 @@ var cors = require("cors");
 var app = express();
 
 // Environment variable: PORT where the node server is listening
-var SERVER_PORT = process.env.SERVER_PORT || 5000;
+var SERVER_PORT = process.env.SERVER_PORT || 5050;
 // Environment variable: URL where our OpenVidu server is listening
-var OPENVIDU_URL = process.env.OPENVIDU_URL || 'http://localhost:4443';
+var OPENVIDU_URL = process.env.OPENVIDU_URL || 'https://localhost:8443';
 // Environment variable: secret shared with our OpenVidu server
-var OPENVIDU_SECRET = process.env.OPENVIDU_SECRET || 'MY_SECRET';
+var OPENVIDU_SECRET = process.env.OPENVIDU_SECRET || 'NAMANMU';
 
 // Enable CORS support
 app.use(
@@ -37,21 +37,44 @@ server.listen(SERVER_PORT, () => {
   console.warn('Application server connecting to OpenVidu at ' + OPENVIDU_URL);
 });
 
-app.post("/api/sessions", async (req, res) => {
+app.get("/api",async(req, res) => {
+  res.send("Server is working. Please POST to /api/sessions to create a new session");
+});
+
+app.post("/openvidu/sessions", async (req, res) => {
   var session = await openvidu.createSession(req.body);
   res.send(session.sessionId);
 });
 
-app.post("/api/sessions/:sessionId/connections", async (req, res) => {
-  var session = openvidu.activeSessions.find(
-    (s) => s.sessionId === req.params.sessionId
-  );
-  if (!session) {
-    res.status(404).send();
-  } else {
-    var connection = await session.createConnection(req.body);
-    res.send(connection.token);
-  }
+// app.post("/openvidu/sessions/:sessionId/connections", async (req, res) => {
+//   var session = openvidu.activeSessions.find(
+//     (s) => s.sessionId === req.params.sessionId
+//   );
+//   if (!session) {
+//     res.status(404).send();
+//   } else {
+//     var connection = await session.createConnection(req.body);
+//     res.send(connection.token);
+//   }
+  // app.post("/openvidu/sessions", async (req, res) => {
+  //   var session = await openvidu.createSession(req.body);
+  //   res.send(session.sessionId);
+  // });
+  
+  app.post("/api/sessions/:sessionId/connections", async (req, res) => {
+    var session = openvidu.activeSessions.find(
+      (s) => s.sessionId === req.params.sessionId
+    );
+    if (!session) {
+      res.status(404).send();
+    } else {
+      var connection = await session.createConnection(req.body);
+      res.send(connection.token);
+    }
+    app.post("/api/sessions", async (req, res) => {
+      var session = await openvidu.createSession(req.body);
+      res.send(session.sessionId);
+    });
 });
 
 process.on('uncaughtException', err => console.error(err));

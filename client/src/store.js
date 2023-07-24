@@ -3,7 +3,7 @@ import {create} from "zustand";
 import axios from "axios";
 
 // ★ TODO : 서버 url 변경 필요
-const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://demos.openvidu.io/';
+const APPLICATION_SERVER_URL ='https://mysquidcanvas.shop/';
 
 const useStore = create((set) => ({
     // 상태와 관련된 변수와 함수들을 정의 : create 함수

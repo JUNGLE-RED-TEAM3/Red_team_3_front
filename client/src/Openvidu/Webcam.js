@@ -16,7 +16,7 @@ import GameBoard from '../Pages_info/GameBoard';
 import ResultScreen from '../Pages_info/ResultScreen';
 
 // ★ TODO : 서버 url 변경 필요
-// const APPLICATION_SERVER_URL = "https://seoyoungtest1.shop/"
+// const APPLICATION_SERVER_URL = "https://mysquidcanvas.shop/"
 const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://demos.openvidu.io/';
 
 // ★ TODO : APP 컴포넌트 세부 사항 수정 필요
@@ -346,6 +346,19 @@ class Webcam extends Component {
         return await this.createToken(sessionId);
     }
 
+    // async createSession(sessionId) {
+    //     const response = await axios.post(`${APPLICATION_SERVER_URL}openvidu/sessions`, { customSessionId: sessionId }, {
+    //         headers: { 'Content-Type': 'application/json', },
+    //     });
+    //     return response.data; // The sessionId
+    // }
+
+    // async createToken(sessionId) {
+    //     const response = await axios.post(`${APPLICATION_SERVER_URL}openvidu/sessions/${sessionId}/connections`, {}, {
+    //         headers: { 'Content-Type': 'application/json', },
+    //     });
+    //     return response.data; // The token
+    // }
     async createSession(sessionId) {
         const response = await axios.post(APPLICATION_SERVER_URL + 'api/sessions', { customSessionId: sessionId }, {
             headers: { 'Content-Type': 'application/json', },
