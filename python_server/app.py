@@ -2,6 +2,10 @@ import os
 import requests
 from flask import Flask, request
 from flask_cors import CORS
+import dotenv
+
+dotenv_file = dotenv.find_dotenv()
+dotenv.load_dotenv(dotenv_file)
 
 app = Flask(__name__)
 
@@ -14,13 +18,14 @@ OPENVIDU_URL = os.environ.get("OPENVIDU_URL")
 OPENVIDU_SECRET = os.environ.get("OPENVIDU_SECRET")
 
 
+
 @app.route("/api/sessions", methods=['POST'])
 def initializeSession():
     try:
         body = request.json if request.data else {}
         response = requests.post(
             OPENVIDU_URL + "openvidu/api/sessions",
-            verify=False,
+            verify=True,
             auth=("OPENVIDUAPP", OPENVIDU_SECRET),
             headers={'Content-type': 'application/json'},
             json=body
@@ -32,7 +37,7 @@ def initializeSession():
             # Session already exists in OpenVidu
             return request.json["customSessionId"]
         else:
-            return err
+            return str(err)
 
 
 @app.route("/api/sessions/<sessionId>/connections", methods=['POST'])
@@ -40,7 +45,7 @@ def createConnection(sessionId):
     body = request.json if request.data else {}
     return requests.post(
         OPENVIDU_URL + "openvidu/api/sessions/" + sessionId + "/connection",
-        verify=False,
+        verify=True,
         auth=("OPENVIDUAPP", OPENVIDU_SECRET),
         headers={'Content-type': 'application/json'},
         json=body
