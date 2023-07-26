@@ -6,6 +6,8 @@ var OpenVidu = require("openvidu-node-client").OpenVidu;
 var cors = require("cors");
 var app = express();
 
+const Server = require("socket.io");
+
 // Environment variable: PORT where the node server is listening
 var SERVER_PORT = process.env.SERVER_PORT || 5050;
 // Environment variable: URL where our OpenVidu server is listening
@@ -53,5 +55,32 @@ app.post("/api/sessions/:sessionId/connections", async (req, res) => {
     res.send(connection.token);
   }
 });
+
+// ---------------------Socket.io---------------------
+// TODO: 연결 확인은 아직, 클라이언트 정리 끝나면 연결 확인 해보기 (07/27 00:37)
+const io = Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("socket_test!! New client connected", socket.id);
+
+  socket.on("join_session", (sessionId) => {
+    console.log("socket test!! sessionId: ", sessionId)
+    socket.join(sessionId);
+  });
+
+  socket.on("leave_session", ([sessionId, userName]) => {
+    console.log("socket test!! leave_session: ", sessionId, userName)
+    socket.leave(sessionId);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("socket test!! Client disconnected");
+  });
+}); 
+
 
 process.on('uncaughtException', err => console.error(err));

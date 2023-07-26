@@ -26,6 +26,10 @@ python3 -m venv venv
 ```
 
 Install dependencies
+```
+pip install --upgrade pip setuptools
+pip install --upgrade requests
+```
 
 ```
 pip install -r requirements.txt
