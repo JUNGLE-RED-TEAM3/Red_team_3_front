@@ -7,7 +7,7 @@ import numpy as np
 img = cv2.imread(r'C:\Users\SAMSUNG\Desktop\A_maskingPRac\Red_team_3_front\client\flask-server\pictures\d_circle.png')
 
 #이제부터 시작
-
+hi =1
 # 이미지의 모양 확인 (높이, 넓이, 채널 수)
 height, width, channel = img.shape
 
