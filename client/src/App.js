@@ -22,7 +22,7 @@ import GameHibiscus from './Game2/GameHibiscus';
 import './Pages_info/JoinGameForm.css';
 
 // ★ TODO : 서버 url 변경 필요
-const APPLICATION_SERVER_URL = 'https://demos.openvidu.io/';
+const APPLICATION_SERVER_URL = 'https://mysquidcanvas.shop/';
 
 function App() {
 

@@ -7,11 +7,11 @@ var cors = require("cors");
 var app = express();
 
 // Environment variable: PORT where the node server is listening
-var SERVER_PORT = process.env.SERVER_PORT || 5000;
+var SERVER_PORT = process.env.SERVER_PORT || 5050;
 // Environment variable: URL where our OpenVidu server is listening
-var OPENVIDU_URL = process.env.OPENVIDU_URL || 'http://localhost:4443';
+var OPENVIDU_URL = process.env.OPENVIDU_URL || 'http://localhost:8443';
 // Environment variable: secret shared with our OpenVidu server
-var OPENVIDU_SECRET = process.env.OPENVIDU_SECRET || 'MY_SECRET';
+var OPENVIDU_SECRET = process.env.OPENVIDU_SECRET || 'NAMANMU';
 
 // Enable CORS support
 app.use(
