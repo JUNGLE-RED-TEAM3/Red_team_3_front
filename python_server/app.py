@@ -17,8 +17,6 @@ SERVER_PORT = os.environ.get("SERVER_PORT")
 OPENVIDU_URL = os.environ.get("OPENVIDU_URL")
 OPENVIDU_SECRET = os.environ.get("OPENVIDU_SECRET")
 
-
-
 @app.route("/api/sessions", methods=['POST'])
 def initializeSession():
     try:
