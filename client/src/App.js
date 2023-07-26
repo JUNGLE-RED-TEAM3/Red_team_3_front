@@ -36,9 +36,9 @@ function App() {
     return (
         <Routes>
             {/* 월요일 데모 이후 지울 것! */}
-            <Route path="/" element={<Webcam />} />
-            {/* <Route path="/" element={<JoinGameForm />} />             
-            <Route path="/WaitingRoom" element={<WaitingRoom />} />    */}
+            {/* <Route path="/" element={<Webcam />} /> */}
+            <Route path="/" element={<JoinGameForm />} />             
+            <Route path="/WaitingRoom" element={<WaitingRoom />} />   
         
             <Route path="/Game1" element={<GameDalgona />} />         {/* "/Game1" 경로에 GameDalgona 컴포넌트 설정 */}
             <Route path="/Game2" element={<GameHibiscus />} />        {/* "/Game2" 경로에 GameHibiscus 컴포넌트 설정 */}
