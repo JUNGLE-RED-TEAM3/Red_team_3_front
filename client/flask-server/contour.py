@@ -6,6 +6,7 @@ import numpy as np
 # JUNHO: 해당부분은 넣고 싶은 이미지를 우클릭하고 copypath를 하여 가져다 붙이면 됩니다.
 img = cv2.imread(r'C:\Users\SAMSUNG\Desktop\A_maskingPRac\Red_team_3_front\client\flask-server\pictures\d_circle.png')
 
+#이제부터 시작
 
 # 이미지의 모양 확인 (높이, 넓이, 채널 수)
 height, width, channel = img.shape
