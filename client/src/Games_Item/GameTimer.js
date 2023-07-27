@@ -9,7 +9,7 @@ const getSeconds = (time) => {
     }
 }
 
-const Timer = () => {
+const GameTimer = () => {
     const [time, setTime] = useState(500); // 남은 시간 (단위: 초)
     useEffect(() => {
         const timer = setInterval(() => {
@@ -29,4 +29,4 @@ const Timer = () => {
     );
 }
 
-export default Timer;
+export default GameTimer;

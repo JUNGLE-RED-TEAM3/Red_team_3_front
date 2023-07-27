@@ -7,133 +7,111 @@
 } */
 
 .title {
-    text-align: center;
-    width: 100%;
-    height: 20vh;
-  }
-  
-  .title h1 {
-    font-family: "Balsamiq Sans", cursive;
-    font-size: 3.5rem;
-    color: #ff0000; /* 빨간색 색상 */
-    text-shadow: 0 0 0.5em rgba(255, 0, 0, 0.8), 0 0 1em rgba(255, 0, 0, 0.8); /* 네온샤인 효과 */
-    margin-bottom: 0.5rem;
-  }
-  
-  .title h1::before {
-    content: "🦑"; /* 오징어 이모지 추가 */
-    display: inline-block;
-    font-size: 4rem;
-    margin-right: 0.5rem;
-    transform: translateY(-0.1rem); /* 이모지를 약간 위로 이동 */
-    color: #f6ff00; /* 노란색 색상 */
-    text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
-  }
-  
-  .title h1::after {
-    content: "🦑"; /* 오징어 이모지 추가 */
-    display: inline-block;
-    font-size: 4rem;
-    margin-left: 0.5rem;
-    transform: translateY(-0.1rem); /* 이모지를 약간 위로 이동 */
-    color: #f6ff00; /* 노란색 색상 */
-    text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
-  }
-
-  .title {
-    position: fixed;
-    top: 10px;
-  }
-
-  /* 비디오 박스들을 감싸는 컨테이너에 대한 CSS */
-.video_box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-
-    position: relative;
-    top: 20vh;
-  }
-  
-  /* 각 개별 비디오 박스에 대한 CSS */
-  .video_frame1 {
-    width: calc(33.33% - 20px); /* 3명씩 한 줄로 정렬하도록 크기 조정 */
-    height: 240px; /* 비디오 박스의 높이 설정 */
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  /* 비디오 박스 내부의 사용자 컴포넌트에 대한 CSS */
-  .video_frame2 {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  /* 사용자 이름 레이블에 대한 CSS */
-  .video_frame2::before {
-    content: attr(data-name);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 8px;
-    box-sizing: border-box;
-  }
-  
-/* 시작 버튼에 대한 CSS */
-.start_button {
-    margin: 1rem;
-    padding: 10px 20px;
-    background-color: #7f0000; 
-    color: whitesmoke; 
-    border: 1px solid #7f0000; 
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  /* 호버 효과 */
-  .start_button:hover {
-    background-color: #a50000; /* 버튼 호버 시 눈금 효과를 연출하기 위해 조금 더 진한 붉은색으로 변경 */
+  text-align: center;
+  width: 100%;
+  height: 20vh;
 }
-  
-  /* 버튼을 가운데 정렬하기 위한 CSS */
-  .start_button_container {
-    display: flex;
-    justify-content: center;
-  }
 
-  /* 한글 폰트 사용 */
+.title h1 {
+font-family: "Balsamiq Sans", cursive;
+font-size: 3.5rem;
+color: #ff0000; /* 빨간색 색상 */
+text-shadow: 0 0 0.5em rgba(255, 0, 0, 0.8), 0 0 1em rgba(255, 0, 0, 0.8); /* 네온샤인 효과 */
+margin-bottom: 0.5rem;
+}
+
+.title h1::before {
+content: "🦑"; /* 오징어 이모지 추가 */
+display: inline-block;
+font-size: 4rem;
+margin-right: 0.5rem;
+transform: translateY(-0.1rem); /* 이모지를 약간 위로 이동 */
+color: #f6ff00; /* 노란색 색상 */
+text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
+}
+
+.title h1::after {
+content: "🦑"; /* 오징어 이모지 추가 */
+display: inline-block;
+font-size: 4rem;
+margin-left: 0.5rem;
+transform: translateY(-0.1rem); /* 이모지를 약간 위로 이동 */
+color: #f6ff00; /* 노란색 색상 */
+text-shadow: 0 0 0.5em rgba(246, 255, 0, 0.8), 0 0 1em rgba(246, 255, 0, 0.8); /* 네온샤인 효과 */
+}
+
+.title {
+position: fixed;
+top: 10px;
+}
+
+/* 비디오 박스들을 감싸는 컨테이너에 대한 CSS */
+.video_box1 {
+display: flex; 
+flex-wrap: wrap; 
+justify-content: space-between;
+gap: 20px;
+
+position: fixed;
+top: 20vh;
+}
+
+/* 각 개별 비디오 박스에 대한 CSS */
+.video_frame1 {
+/* 2명씩 한 줄로 정렬하도록 크기 조정 */
+width: calc(50% - 20px);
+height: 300px; /* 비디오 박스의 높이 설정 */
+border: 2px solid #ddd;
+border-radius: 10px;
+position: relative;
+overflow: hidden;
+
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+/* 비디오 박스 내부의 사용자 컴포넌트에 대한 CSS */
+.video_frame2 {
+width: 100%;
+height: 100%;
+border-radius: 8px;
+overflow: hidden;
+}
+
+/* 사용자 이름 레이블에 대한 CSS */
+.video_frame2::before {
+content: attr(data-name);
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+color: #fff;
+font-size: 12px;
+padding: 4px 8px;
+box-sizing: border-box;
+}
+
+/* 한글 폰트 사용 */
 @font-face {
-	font-family: "Happiness-Sans-Title";
-	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
-		format("woff2");
-	font-weight: normal;
-	font-style: normal;
+font-family: "Happiness-Sans-Title";
+src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
+  format("woff2");
+font-weight: normal;
+font-style: normal;
 }
 
 @media screen and (max-width : 992px) {
-  .temp {
-    float : left;
-    width : 50%;
-  }
+.temp {
+  float : left;
+  width : 50%;
+}
 }
 
 @media screen and (max-width : 768px) {
-  .temp {
-    float : none;
-    width : 100%;
-  }
+.temp {
+  float : none;
+  width : 100%;
+}
 }

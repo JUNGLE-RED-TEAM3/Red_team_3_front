@@ -9,74 +9,128 @@ const useStore = create((set) => ({
     // 상태를 변경하는 함수(상태 갱신 시, 리액티브하게 컴포넌트 업데이트 됨) : set 함수
     
     // 상태 변수, 함수들
-    mySessionId: 'SessionA',
-    updateSessionId: (sessionId) => set({ mySessionId: sessionId }),
+  gamers: [],
+  setGamers: (gamer) => {
+    set((state) => ({
+      gamers: [...state.gamers, gamer],
+    }));
+  },
 
-    myUserName: 'Participant' + Math.floor(Math.random() * 100),
-    updateUserName: (userName) => set({ myUserName: userName }),
+  deleteGamer: (name) => {
+    set((state) => ({
+      gamers: state.gamers.filter((a) => a.name !== name),
+    }));
+  },
+  clearGamer: () => {
+    set((state) => ({
+      gamers: [],
+    }));
+  },
+  sortGamer: () => {
+    set((state) => ({
+      gamers: state.gamers.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        } else if (a.name > b.name) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }),
+    }));
+  },
 
-    session: undefined,
-    updateSession: (session) => set({ session: session }),
+  red_gamers: [],
+  red_setGamers: (gamer) => {
+    set((state) => ({
+      red_gamers: [...state.gamers, gamer],
+    }));
+  },
 
-    mainStreamManager: undefined, 
-    updateMainStreamManager: (mainStreamManager) => set({ mainStreamManager: mainStreamManager }),
-    
-    //💡 publisher, subscribers는 gamers가 있으니까 필요 없을 듯..?
-    publisher: undefined,
-    updatePublisher: (publisher) => set({ publisher: publisher }),
+  red_deleteGamer: (name) => {
+    set((state) => ({
+      red_gamers: state.gamers.filter((a) => a.name !== name),
+    }));
+  },
+  red_clearGamer: () => {
+    set((state) => ({
+      red_gamers: [],
+    }));
+  },
 
-    subscribers: [],
-    updateSubscribers: (subscribers) => set({ subscribers: subscribers }),
+  bluegamers: [],
+  bluesetGamers: (gamer) => {
+    set((state) => ({
+      bluegamers: [...state.gamers, gamer],
+    }));
+  },
 
-    gamers: [],
-    setGamers: (gamer) => {
-      set((state) => ({
-        gamers: [...state.gamers, gamer],
-      }));
-    },
-    deleteGamer: (name) => {
-      set((state) => ({
-        gamers: state.gamers.filter((a) => a.name !== name),
-      }));
-    },
-    clearGamer: () => {
-      set((state) => ({
-        gamers: [],
-      }));
-    },
-    sortGamer: () => {
-      set((state) => ({
-        gamers: state.gamers.sort((a, b) => {
-          if (a.name < b.name) {
-            return -1;
-          } else if (a.name > b.name) {
-            return 1;
-          } else {
-            return 0;
-          }
-        }),
-      }));
-    },
+  bluedeleteGamer: (name) => {
+    set((state) => ({
+      bluegamers: state.gamers.filter((a) => a.name !== name),
+    }));
+  },
+  blueclearGamer: () => {
+    set((state) => ({
+      bluegamers: [],
+    }));
+  },
 
-    // 토큰 및 세션 생성 관리 함수들
-    getToken: async () => {
-      const sessionId = await useStore.getState().createSession(useStore.getState().mySessionId);
-      return await useStore.getState().createToken(sessionId);
-    },
+  setPublishAudio: (name, newValue) => {
+    set((state) => {
+      const gamer = state.gamers.find((x) => x.name === name);
+      gamer.streamManager.publishAudio = newValue;
+      return { gamers: state.gamers };
+    });
+  },
 
-    createSession: async (sessionId) => {
-      const response = await axios.post(APPLICATION_SERVER_URL + 'api/sessions', { customSessionId: sessionId }, {
-          headers: { 'Content-Type': 'application/json', },
-      });
-      return response.data; // The sessionId
-    },
+  myUserID: "none",
+  set_myUserID: (input) => set({ myUserID: input }),
+  
+  cur_time: 1000000,
+  set_Curtime: (input) => set({ cur_time: input }),
 
-    createToken: async (sessionId) => {
-      const response = await axios.post(APPLICATION_SERVER_URL + 'api/sessions/' + sessionId + '/connections', {}, {
-          headers: { 'Content-Type': 'application/json', },
-      });
-      return response.data; // The token
-    }
+  time_state: "no_change",
+  set_time_change: (input) => set({ time_state: input }),
+
+  cnt_answer: 0,
+  set_CntAns: (input) => set(() => ({ cnt_answer: input })),
+
+  curRed_cnt: 0,
+  set_CurRed_cnt: (input) => set(() => ({ curRed_cnt: input })),
+  curBlue_cnt: 0,
+  set_CurBlue_cnt: (input) => set(() => ({ curBlue_cnt: input })),
+  curRed_total: 0,
+  set_CurRed_total: (input) => set(() => ({ curRed_total: input })),
+  curBlue_total: 0,
+  set_CurBlue_total: (input) => set(() => ({ curBlue_total: input })),
+
+  cur_session: undefined,
+  set_session_change: (input) => set({ cur_session: input }),
+
+  cur_turn_states: "room",
+  set_turn_state_change: (input) => set({ cur_turn_states: input }),
+
+  cur_who_turn: "none",
+  set_who_turn: (input) => set({ cur_who_turn: input }),
+
+  cur_round: -1,
+  set_cur_round: (input) => set({ cur_round: input }),
+
+  cur_teller: -1,
+  set_cur_teller: (input) => set({ cur_teller: input }),
+
+  is_my_turn: false,
+  set_my_turn: (input) => set({ is_my_turn: input }),
+
+  is_my_team_turn: false,
+  set_myteam_turn: (input) => set({ is_my_team_turn: input }),
+
+  my_index: 10000,
+  set_my_index: (input) => set({ my_index: input }),
+
+  player_count: 0,
+  set_player_count: (input) => set({ player_count: input }),
 
 
 }));

@@ -1,3 +1,291 @@
 /* 전역으로 사용할 스타일 (모든 js 파일에 import 할 것) */
+/* 전역으로 사용할 스타일 (모든 js 파일에 import 할 것) */
+
+/* 1. JoinGameForm.js */
+:root { /* 해당 css 파일 내에서의 전역 범위 */
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+    /* 위 2개는 변수로 정의 */
+    margin: 0;
+    padding: 0;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  /*** 접속 시 첫 화면 ***/
+  /* JoinGameForm만 다른 배경으로 띄우기 위해, wrapper 클래스를 활용함 */
+  .wrapper {
+    /* 화면 전체로 채우기 (얘만 다른 배경화면) */
+    width: 100vw; /*viewport의 100% (브라우저 창과 같은 너비)*/
+    height: 100vh; /*viewport의 100% (브라우저 창과 같은 높이)*/
+  
+    display: flex;
+    justify-content: center; /*내부 자식 요소들을 수평 방향, 가운데 정렬*/
+    align-items: center; /*내부 자식 요소들을 수직 방향, 가운데 정렬*/
+    background: #231f20;
+    font-family: "Balsamiq Sans", cursive;
+    color: var(--clr-neon);
+    background-color: var(--clr-bg);
+  }
+  
+  .container-main {
+    width: 85%; 
+    display: flex;
+    margin: auto;
+    padding: auto;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .container-main-left{
+    width: min-content; /*내부의 콘텐츠가 차지하는 공간만큼 (최소한으로) 너비 조절*/
+    display: flex; 
+    flex-flow: row wrap; /*자식 요소들 배치를 가로 방향으로, 오버될 때는 다음 줄로 래핑*/
+    justify-content: center;
+    justify-items: center;
+    width: 45%;
+  }
+  
+  .game-title {
+    font-size: 3rem;
+    font-family: "Press Start 2P", cursive; 
+    color: white;
+    text-align: center;
+  }
+  
+  .logo{
+    display: block;
+    width: 100%;
+    padding-top: 1rem;
+    height: auto;
+  }
+  
+  .start-button{
+    margin-top: 1rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .neon-button {
+    font-size: 3rem;
+    display: inline-block; /*요소들을 수평으로 배치, 너비/높이 조정 가능*/
+    cursor: pointer; /*마우스 커서가 올라갔을 때, 손가락 모양으로 변경*/
+    text-decoration: none; /*텍스트에 밑줄 없애기*/
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    /* 두 개의 그림자 효과 (첫째는 약간의 블러 효과, 둘째는 더 강한 블러 효과)
+       텍스트 색상을 현재 색상(--crl-neon)으로 설정 */
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    /* 두 개의 내부 그림자 효과 */
+    position: relative;
+    text-align: center;
+  }
+  
+  /* .neon-button 클래스를 가진 버튼 요소가 화면에 렌더링되는 동안에만 
+     :: 가상 요소가 함께 표시됨 */
+  .neon-button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+  }
+  
+  .neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+  }
+  
+  .neon-button:hover,
+  .neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+  }
+  
+  .neon-button:hover::before,
+  .neon-button:focus::before {
+    opacity: 1;
+  }
+  .neon-button:hover::after,
+  .neon-button:focus::after {
+    opacity: 1;
+  }
+  
+  
+  /*** 닉네임/입장코드 입력 모달창 ***/
+  /* 모달 배경 */
+  .container-modal-bg {
+    /*내부 자식 요소들을 수평 방향, 가운데 정렬*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+  
+    /* 모달 숨기기 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
+    /* ease : 느리게 시작해서 빠르게 끝나는 효과 */
+  }
+  
+  /* 모달 보이기 */
+  .show-modal {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* 모달 컨테이너 */
+  .container-modal {
+    width: 40%;
+    background-color: #231f20;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: "Balsamiq Sans", cursive;
+    color: var(--clr-neon);
+  }
+  
+  /* 이미지 스타일 */
+  .img-div img {
+    width: 100px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* 제목 스타일 */
+  .join-dialog h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* 입력 필드 스타일 */
+  .join-form p {
+    font-family: 'Happiness-Sans-Title', 'sans-serif';
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .join-form label {
+    font-family: 'Happiness-Sans-Title', 'sans-serif';
+    font-weight: bold;
+    margin-right: 10px;
+    color: white;
+  }
+  
+  .join-form input[type="text"] {
+    flex: 1; /*입력 필드가 가능한 최대 너비를 가짐*/
+    padding: 5px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: white;
+    background-color: #231f20;
+  }
+  
+  /* 버튼 스타일 */
+  .join-form button {
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Happiness-Sans-Title', 'sans-serif';
+    text-decoration: none;
+    
+    position: relative;
+    display: inline-block;
+  
+    cursor: pointer;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+    
+    background-color: transparent;
+    transition: color 0.2s ease;
+  }
+  
+  .join-form button:hover {
+    color: #231f20;
+    background-color: var(--clr-neon);
+    text-shadow: none;
+  }
+  
+  /* 모달창의 내용 가운데 정렬 */
+  .join-dialog {
+    display: flex;
+    flex-direction: column;   /*내부 자식 요소들을 수직 방향으로 배치*/
+    justify-content: center; /*내부 자식 요소들을 수평 방향, 가운데 정렬*/
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 한글 폰트 사용 */
+@font-face {
+	font-family: "Happiness-Sans-Title";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
+		format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@media screen and (max-width : 992px) {
+  .temp {
+    float : left;
+    width : 50%;
+  }
+}
+
+@media screen and (max-width : 768px) {
+  .temp {
+    float : none;
+    width : 100%;
+  }
+}
+  
+/* 한글 폰트 사용 */
+@font-face {
+    font-family: "Happiness-Sans-Title";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 

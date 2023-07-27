@@ -1,10 +1,11 @@
 import React from 'react';
 import './GameDalgona.css';
-import GameTimer from './GameTimer';
+import GameTimer from '../Games_Item/GameTimer';
+import VideoCanvas from '../Games_Item/videoCanvas';
 
 // 지울 것
 import { useNavigate } from 'react-router-dom';
-
+import {Button} from 'react-bootstrap';
 
 
 const GameDalgona = () => {
@@ -20,8 +21,9 @@ const GameDalgona = () => {
 
         {/* 지울 것 */}
         <div>
-            <button className='btn btn-large btn-primary'
-                    onClick={(e)=>{Navigate('/Game2')}}>NEXT PAGE</button>
+            <Button className='btn btn-large btn-primary'
+                    onClick={(e)=>{Navigate('/Game2')}}>NEXT PAGE
+            </Button>
         </div>
         
         <div className='DalgonaNav'>
@@ -36,7 +38,7 @@ const GameDalgona = () => {
                 <h2>달고나 이미지화면</h2>
             </div>
             <div className='WebcamBox'>
-                <img src='http://localhost:8000/video_feed' alt="video_feed" />
+                <VideoCanvas/>
             </div>
         </div>
     </div>)
