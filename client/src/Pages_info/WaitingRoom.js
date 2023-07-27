@@ -5,6 +5,10 @@ import './WaitingRoom.css';
 import useStore from '../store';
 import UserVideoComponent from '../Openvidu/UserVideoComponent';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 function WaitingRoom() {
     const {
       gamers,
@@ -54,8 +58,10 @@ function WaitingRoom() {
               <h1>Squid Canvas</h1>    
           </header>
                   
-              <section className='users'>
-                <div className="video_box1">
+          <Container>
+          <Row>
+            <Col>
+            <div className="video_box1">
                   <div id={0} className="video_frame1">
                     {gamers[0] && (
                       <div className="video_frame2">
@@ -67,7 +73,9 @@ function WaitingRoom() {
                     )}
                   </div>
                 </div>
-                <div className="video_box1">
+            </Col>
+            <Col>
+             <div className="video_box1">
                   <div id={1} className="video_frame1">
                     {gamers[1] && (
                       <div className="video_frame2">
@@ -79,7 +87,11 @@ function WaitingRoom() {
                     )}
                   </div>
                 </div>
-                <div className="video_box1">
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+            <div className="video_box1">
                   <div id={2} className="video_frame1">
                     {gamers[2] && (
                       <div className="video_frame2">
@@ -90,20 +102,24 @@ function WaitingRoom() {
                       </div>
                     )}
                   </div>
-                </div>
-                <div className="video_box1">
+                </div>        
+            </Col>
+            <Col>
+            <div className="video_box1">
                   <div id={3} className="video_frame1">
                     {gamers[3] && (
                       <div className="video_frame2">
                         <UserVideoComponent
-                  streamManager={{ gamers }.gamers[3].streamManager}
-                  my_name={{ gamers }.gamers[3].name}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-        </section>
+                          streamManager={{ gamers }.gamers[3].streamManager}
+                          my_name={{ gamers }.gamers[3].name}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+            </Col>
+          </Row>
+        </Container>
 
       </div>
         
